@@ -1,0 +1,15 @@
+# Python
+*.pyc
+__pycache__/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Project stuff
+logs
+*.txt
+.env
+.env.*
+uploads/
+config.py

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="upload-form">
+    <h1>File upload</h1>
+    {% if error %}
+        <p style="color: #ff4444">{{ error }}</p>
+    {% endif %}
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit" class="button-primary">upload</button>
+    </form>
+</div>
+<a href="{{ url_for('index') }}" class="button-primary">Back to list</a>
+{% endblock %}

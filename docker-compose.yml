@@ -1,0 +1,11 @@
+services:
+  pystorage:
+    container_name: pystorage
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+       - /srv/pystorage:/files
+    ports:
+      - 5000:5000
+    restart: unless-stopped
