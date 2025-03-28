@@ -1,6 +1,7 @@
 # PyStorage
 
 Pretty simple selfhosted file storage solution with web interface and REST API.
+
 Perfect for home use and small teams.
 
 ![Interface](screenshot.jpg)
@@ -22,7 +23,7 @@ Perfect for home use and small teams.
 - Clone repository:
 
 ```sh
-git clone https://github.com/yourusername/pystorage.git
+git clone https://github.com/nikita-popov/pystorage.git
 cd pystorage
 ```
 
@@ -50,14 +51,13 @@ class Config:
 python -c "from werkzeug.security import generate_password_hash; print(generate_password_hash('my_strong_password'))"
 ```
 
-### Runing
+### Running
 
 #### With `docker`
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
-
 
 #### With `gunicorn`
 
@@ -91,7 +91,6 @@ You can also use it with CLI utils like curl.
 #### Base URL
 
 http://localhost:5000/api/
-
 
 #### Endpoints
 
@@ -136,4 +135,4 @@ pytest
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details
+MIT License - see [LICENSE](LICENSE) for details.
