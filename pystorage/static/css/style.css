@@ -27,20 +27,27 @@ main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
 }
 
 header {
-    padding: 15px 20px;
     background: var(--surface);
     border-bottom: 1px solid #404040;
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 footer {
     background: var(--surface);
-    padding: 20px;
+    /*padding: 5px;*/
     text-align: center;
-    margin-top: 40px;
+    /*margin-top: 40px;*/
     border-top: 1px solid #404040;
 }
 
@@ -75,6 +82,69 @@ a:hover {
     background-color: var(--accent-hover);
 }
 
+.site-title {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.button-logout {
+    background: none;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-logout:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.upload-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 20px;
+}
+
+.inline-upload-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+    /*max-width: 500px;*/
+}
+
+.compact-file-input {
+    flex-grow: 1;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid #404040;
+    border-radius: 4px;
+    color: var(--text-primary);
+}
+
 .file-list {
     list-style: none;
     padding: 0;
@@ -91,13 +161,13 @@ a:hover {
     align-items: center;
 }
 
-.upload-form {
-    margin: 30px auto;
-    padding: 20px;
+/*.upload-form {
+    margin: 5px auto;
+    padding: 10px;
     background: var(--surface);
     border-radius: 8px;
     max-width: 500px;
-}
+}*/
 
 input[type="text"],
 input[type="password"],
@@ -109,6 +179,37 @@ input[type="file"] {
     color: var(--text-primary);
     border: 1px solid #404040;
     border-radius: 4px;
+}
+
+.file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.file-table th, .file-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #404040;
+}
+
+.file-table th {
+    background-color: #2d2d2d;
+}
+
+/* Danger Button */
+.button-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-danger:hover {
+    background-color: #bb2d3b;
 }
 
 @media (max-width: 768px) {

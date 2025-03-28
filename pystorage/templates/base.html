@@ -1,29 +1,44 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Service</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PyStorage</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header>
-        <div class="content-wrapper">
-            {% if 'username' in session %}
-                <p>{{ session.username }} | <a href="{{ url_for('main.logout') }}">logout</a></p>
-            {% endif %}
+  <header>
+    <div class="header-content">
+      <h1 class="site-title">PyStorage</h1>
+      <div class="user-panel">
+        {% if 'username' in session %}
+        <!--p>{{ session.username }} | <a href="{{ url_for('main.logout') }}">logout</a></p-->
+        <div class="user-info">
+          <span class="username">{{ session.username }}</span>
+          <a href="{{ url_for('main.logout') }}" class="button-logout">logout</a>
         </div>
-    </header>
-    <main>
-        <div class="content-wrapper">
-            {% block content %}{% endblock %}
-        </div>
-    </main>
-    <footer>
-        <div class="content-wrapper">
-            <p>&copy; {{ current_date }} File Service.</p>
-        </div>
-    </footer>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="content-wrapper">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+  <footer>
+    <div class="content-wrapper">
+      <p>&copy; {{ current_date }} PyStorage.</p>
+    </div>
+  </footer>
 </body>
 </html>

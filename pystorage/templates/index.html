@@ -1,20 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>pystorage</h1>
-<a href="{{ url_for('main.upload') }}" class="button-primary">upload</a>
+<div class="upload-form">
+  <h2>Upload</h2>
+  <form class="inline-upload-form" method="POST" enctype="multipart/form-data" action="{{ url_for('main.upload') }}">
+    <input class="compact-file-input" type="file" name="file" required />
+    <button class="button-primary" type="submit">Upload</button>
+  </form>
+</div>
 
-<h2>Files list:</h2>
+<h2>Files list</h2>
 {% if files %}
-    <ul class="file-list">
+<table class="file-table">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Size</th>
+      <th>Upload Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
     {% for file in files %}
-        <li class="file-item">
-            <a href="{{ url_for('main.download', filename=file.name) }}">{{ file.name }}</a>
-            <span class="file-size">{{ file.size|filesizeformat }}</span>
-        </li>
+    <tr>
+      <td>
+        <a href="{{ url_for('main.download', filename=file.name) }}">
+          {{ file.name }}
+        </a>
+      </td>
+      <td>{{ file.size|filesizeformat }}</td>
+      <td>{{ file.upload_date.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>
+        <form method="POST"
+              action="{{ url_for('main.delete', filename=file.name) }}"
+              onsubmit="return confirm('Are you sure?')">
+          <button type="submit" class="button-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
     {% endfor %}
-    </ul>
+  </tbody>
+</table>
 {% else %}
-    <p>Have no files</p>
+<p>No files uploaded yet</p>
 {% endif %}
+
 {% endblock %}

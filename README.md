@@ -3,6 +3,8 @@
 Pretty simple selfhosted file storage solution with web interface and REST API.
 Perfect for home use and small teams.
 
+![Interface](screenshot.jpg)
+
 ## Features
 
 - User authentication
