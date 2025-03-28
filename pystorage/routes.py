@@ -46,6 +46,7 @@ def login():
 
 
 @bp.route('/logout')
+@login_required
 def logout():
     session.pop('username', None)
     return redirect(url_for('main.login'))
@@ -54,10 +55,11 @@ def logout():
 @bp.route('/')
 @login_required
 def index():
-    upload = f"{current_app.config['UPLOAD_FOLDER']}/{session['username']}"
+    uploads = f"{current_app.config['UPLOAD_FOLDER']}/{session['username']}"
+    os.makedirs(uploads, exist_ok=True)
     files = []
-    for filename in os.listdir(upload):
-        path = os.path.join(upload, filename)
+    for filename in os.listdir(uploads):
+        path = os.path.join(uploads, filename)
         if os.path.isfile(path):
             files.append({
                 'name': filename,

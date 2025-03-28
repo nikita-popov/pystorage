@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-       - /srv/pystorage:/files
+       - /srv/pystorage:/app/uploads
     ports:
       - 5000:5000
     restart: unless-stopped
