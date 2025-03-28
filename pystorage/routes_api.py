@@ -12,6 +12,7 @@ from flask_httpauth import HTTPBasicAuth
 from werkzeug.utils import secure_filename
 # from werkzeug.security import check_password_hash
 
+
 basic_auth = HTTPBasicAuth()
 
 bp = Blueprint("api", __name__)

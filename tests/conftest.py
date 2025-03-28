@@ -11,7 +11,7 @@ from config import Config as config
 
 @pytest.fixture(scope='module')
 def app():
-    """Фикстура для создания экземпляра приложения."""
+    """A fixture for creating an application instance."""
     upload_dir = tempfile.TemporaryDirectory()
     os.environ['SECRET_KEY'] = 'test-secret-key'
     app = create_app(config)
@@ -31,13 +31,13 @@ def app():
 
 @pytest.fixture(scope='module')
 def client(app):
-    """Фикстура для тестового клиента основного приложения."""
+    """Fixture for the main application test client."""
     return app.test_client()
 
 
 @pytest.fixture
 def auth_client(client):
-    """Аутентифицируемся как тестовый пользователь"""
+    """Authenticate as a test user."""
     client.post('/login', data={
         'username': 'testuser',
         'password': 'testpass'
@@ -47,6 +47,6 @@ def auth_client(client):
 
 @pytest.fixture
 def api_headers():
-    """Заголовки для Basic Auth"""
+    """Headers for Basic Auth."""
     creds = base64.b64encode(b'testuser:testpass').decode('utf-8')
     return {'Authorization': f'Basic {creds}'}
