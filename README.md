@@ -52,27 +52,28 @@ python -c "from werkzeug.security import generate_password_hash; print(generate_
 
 ### Runing
 
-- With `gunicorn`:
+#### With `docker`
 
-  - Create a virtualenv and install dependencies:
+```sh
+docker-compose up -d
+```
 
-  ```sh
+
+#### With `gunicorn`
+
+- Create a virtualenv and install dependencies:
+
+```sh
 python3 -m venv .venv
 source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
-  ```
+```
 
-  - Start app:
-
-  ```sh
-gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi-app:app
-  ```
-
-- With `docker`:
+- Start app:
 
 ```sh
-docker-compose up -d
+gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi-app:app
 ```
 
 ## Usage
