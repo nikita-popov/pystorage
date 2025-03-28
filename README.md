@@ -17,14 +17,6 @@ Perfect for home use and small teams.
 
 ## Quick Start
 
-Run with Docker:
-
-```sh
-docker-compose up -d
-```
-
-Service will be available at: http://localhost:5000
-
 ### Installation
 
 - Clone repository:
@@ -32,15 +24,6 @@ Service will be available at: http://localhost:5000
 ```sh
 git clone https://github.com/yourusername/pystorage.git
 cd pystorage
-```
-
-- Create a virtualenv and install dependencies:
-
-```sh
-python3 -m venv .venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
 ```
 
 ### Configuration
@@ -67,15 +50,26 @@ class Config:
 python -c "from werkzeug.security import generate_password_hash; print(generate_password_hash('my_strong_password'))"
 ```
 
-- Run it
+### Runing
 
-  - With `gunicorn`:
+- With `gunicorn`:
 
-```sh
-gunicorn --workers 4 --bind 0.0.0.0:5001 wsgi-app:app
-```
+  - Create a virtualenv and install dependencies:
 
-  - With `docker`:
+  ```sh
+python3 -m venv .venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+  ```
+
+  - Start app:
+
+  ```sh
+gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi-app:app
+  ```
+
+- With `docker`:
 
 ```sh
 docker-compose up -d
