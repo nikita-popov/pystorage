@@ -4,7 +4,7 @@ def test_login_logout(client):
         'password': 'testpass'
     }, follow_redirects=True)
     assert response.status_code == 200
-    assert b'pystorage' in response.data
+    assert b'PyStorage' in response.data
 
     response = client.get('/logout', follow_redirects=True)
     assert b'login' in response.data
